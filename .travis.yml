@@ -14,3 +14,8 @@ after_success:
   - docker build -t edmorra/multi-nginx ./nginx
   - docker build -t edmorra/multi-server ./server
   - docker build -t edmorra/multi-worker ./worker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push edmorra/multi-client
+  - docker push edmorra/multi-nginx
+  - docker push edmorra/multi-server
+  - docker push edmorra/multi-worker
